@@ -11,5 +11,14 @@ namespace StargateAPI.Controllers
             httpResponse.StatusCode = response.ResponseCode;
             return httpResponse;
         }
+
+        public static IActionResult GetResponse(this ControllerBase controllerBase, Exception ex)
+        {
+            var newResponse = BaseResponse.MakeResponseFromException(ex);
+            var httpResponse = new ObjectResult(newResponse);
+            httpResponse.StatusCode = newResponse.ResponseCode;
+            return httpResponse;
+
+        }
     }
 }

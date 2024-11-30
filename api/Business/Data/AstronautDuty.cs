@@ -1,5 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace StargateAPI.Business.Data
@@ -7,6 +7,8 @@ namespace StargateAPI.Business.Data
     [Table("AstronautDuty")]
     public class AstronautDuty
     {
+        public static readonly string RETIRED_DUTY = "RETIRED";
+
         public int Id { get; set; }
 
         public int PersonId { get; set; }

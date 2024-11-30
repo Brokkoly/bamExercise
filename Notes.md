@@ -1,0 +1,5 @@
+- Improving responses on create commands to be something other than "Bad Request"
+- Probably not going to have time to do unit tests. Spending time with family for the holidays
+- Add checking to CreateAstronautDutyPreProcessor, wasn't checking the person id when looking for previous duty. 
+- Add CreatePersonPreProcessor to the request preprocessors. It wasn't hooked up before
+- update how error responses are handled so that we can properly map exception types to Http status codes

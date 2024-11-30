@@ -6,3 +6,5 @@
 /api/obj
 /.vs/exercise1
 /ui/bamUI/.vscode
+*.db
+.vs
