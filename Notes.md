@@ -28,4 +28,5 @@
     - Cors. This feels like it is never the same for getting localhost stuff to run, so I just added                 ```Response.Headers.Append("Access-Control-Allow-Origin", "*");``` to every api endpoint and called it a day. 
     - Excluding items from responses
       - This one is more of a vibes thing from me. I like the idea of being able to call an api while excluding items in the response. This is probably me trying to be client agnostic when programming, instead of just making a different endpoint that only returns the name and id of every person (as an example).
-    - More exceptions. Getting a 
+    - More exceptions. Trying to find a person who isn't there should return a 404 - Not found exception.
+      - This would have taken a little more time than I had to rework the response creator. 
