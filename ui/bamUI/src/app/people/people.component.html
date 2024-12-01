@@ -1,0 +1,15 @@
+<h1>people works!</h1>
+<div>
+@if (isLoading){
+    Loading...
+} @else{
+    @for(person of data; track person.name){
+        <div margin-bottom="20px">
+        <div><a [routerLink]="['/people', person.personId]">This should have just been a link to /people/{{person.personId}} but routing wasn't working</a></div>
+        <div><span>Name: {{person.name}}</span></div>
+        <div><span>Current Rank: {{person.currentRank||"None"}}</span></div>
+        <div><span>Current Duty Title: {{person.currentDutyTitle || "None"}}</span></div>
+        </div>
+    }
+}
+</div>
