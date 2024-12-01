@@ -9,7 +9,6 @@ namespace StargateAPI.Controllers
         public int ResponseCode { get; set; } = (int)HttpStatusCode.OK;
 
 
-
         public static BaseResponse MakeResponseFromException(Exception ex)
         {
             var response = new BaseResponse()

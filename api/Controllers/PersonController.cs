@@ -20,6 +20,8 @@ namespace StargateAPI.Controllers
         [HttpGet("")]
         public async Task<IActionResult> GetPeople()
         {
+            Response.Headers.Append("Access-Control-Allow-Origin", "*");
+
             try
             {
                 var result = await _mediator.Send(new GetPeople()
@@ -28,6 +30,7 @@ namespace StargateAPI.Controllers
                 });
 
                 return this.GetResponse(result);
+
             }
             catch (Exception ex)
             {
@@ -43,6 +46,8 @@ namespace StargateAPI.Controllers
         [HttpGet("{name}")]
         public async Task<IActionResult> GetPersonByName(string name)
         {
+            Response.Headers.Append("Access-Control-Allow-Origin", "*");
+
             try
             {
                 var result = await _mediator.Send(new GetPersonByName()
@@ -63,16 +68,41 @@ namespace StargateAPI.Controllers
             }
         }
 
+        [HttpGet("id/{id}")]
+        public async Task<IActionResult> GetPersonById(string id)
+        {
+            Response.Headers.Append("Access-Control-Allow-Origin", "*");
+
+            try
+            {
+                var result = await _mediator.Send(new GetPersonById()
+                {
+                    Id = id
+                });
+
+                return this.GetResponse(result);
+            }
+            catch (Exception ex)
+            {
+                return this.GetResponse(new BaseResponse()
+                {
+                    Message = ex.Message,
+                    Success = false,
+                    ResponseCode = (int)HttpStatusCode.InternalServerError
+                });
+            }
+        }
+
         [HttpPost("")]
         public async Task<IActionResult> CreatePerson([FromBody] string name)
         {
+            Response.Headers.Append("Access-Control-Allow-Origin", "*");
             try
             {
                 var result = await _mediator.Send(new CreatePerson()
                 {
                     Name = name
                 });
-
                 return this.GetResponse(result);
             }
             catch (Exception ex)

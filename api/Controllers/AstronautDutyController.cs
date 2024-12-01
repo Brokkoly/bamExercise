@@ -19,6 +19,7 @@ namespace StargateAPI.Controllers
         [HttpGet("{name}")]
         public async Task<IActionResult> GetAstronautDutiesByName(string name)
         {
+            Response.Headers.Append("Access-Control-Allow-Origin", "*");
             try
             {
                 var result = await _mediator.Send(new GetPersonByName()
@@ -36,14 +37,15 @@ namespace StargateAPI.Controllers
                     Success = false,
                     ResponseCode = (int)HttpStatusCode.InternalServerError
                 });
-            }            
+            }
         }
 
         [HttpPost("")]
         public async Task<IActionResult> CreateAstronautDuty([FromBody] CreateAstronautDuty request)
         {
-                var result = await _mediator.Send(request);
-                return this.GetResponse(result);           
+            Response.Headers.Append("Access-Control-Allow-Origin", "*");
+            var result = await _mediator.Send(request);
+            return this.GetResponse(result);
         }
     }
 }
