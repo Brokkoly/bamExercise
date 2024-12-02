@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { Component, inject, Input } from '@angular/core';
+import { ActivatedRoute, RouterModule } from '@angular/router';
 import { PersonService } from '../../dataAPI/personService';
 import { PersonAstronaut } from '../../dtos/personAstronaut';
 
@@ -12,15 +12,29 @@ import { PersonAstronaut } from '../../dtos/personAstronaut';
 })
 export class PersonDetailComponent {
   public data: PersonAstronaut | undefined = undefined;
+  // @Input() id: number = -1;
+  private _route = inject(ActivatedRoute);
+  isLoading = false;
   constructor(private api: PersonService) {}
+
   ngOnInit(): void {
-    // const id = this._route.snapshot.paramMap.get('id');
+    const id = this._route.snapshot.paramMap.get('id');
+    this.getPersonById(Number(id));
   }
   getPersonById(id: number) {
-    this.api.getAllPersons().subscribe({
+    this.isLoading = true;
+    this.api.getPersonById(id).subscribe({
       next: (response) => {
-        this.data = response.people.find((x) => x.personId === id);
+        this.data = response.person
+        this.isLoading = false;
       },
+      error: (error)=>{
+        console.error(error);
+      },
+      complete: ()=>{
+        console.log("Loaded person details");
+        this.isLoading = false;
+      }
     });
   }
 }

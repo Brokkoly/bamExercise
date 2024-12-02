@@ -12,3 +12,10 @@ export interface GetAllPersonAstronautResponse {
   responseCode: number;
   success: boolean;
 }
+
+export interface GetPersonByIdResponse{
+  message: string;
+  person: PersonAstronaut;
+  responseCode: number;
+  success: boolean;
+}

@@ -1,10 +1,15 @@
-<h1>Person details!</h1>
+<h3>{{ data?.name || "Person" }} details:</h3>
 <div>
-@if (data===undefined){
-    Person not found
-} @else{
-    <span>Name: {{data.name}}</span>
-    <span>Current Rank: {{data.currentRank??"None"}}</span>
-    <span>Current Duty Title: {{data.currentDutyTitle??"None"}}</span>
-}
-<div>
+  @if (isLoading || data==undefined){ Person not found } @else{
+  <div>
+    <span>Name: {{ data.name }}</span>
+  </div>
+  <div>
+    <span>Current Rank: {{ data.currentRank || "None" }}</span>
+  </div>
+  <div>
+    <span>Current Duty Title: {{ data.currentDutyTitle || "None" }}</span>
+  </div>
+  }
+  <div></div>
+</div>

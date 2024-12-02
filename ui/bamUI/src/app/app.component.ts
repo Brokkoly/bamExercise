@@ -9,15 +9,11 @@ import { PersonDetailComponent } from './person-detail/person-detail.component';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, 
-    PersonDetailComponent,
-    PeopleComponent
-    ],
-    providers: [PersonService],
+  imports: [RouterOutlet, PersonDetailComponent, PeopleComponent],
+  providers: [PersonService],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
 export class AppComponent {
   title = 'Stargate';
-  
 }
